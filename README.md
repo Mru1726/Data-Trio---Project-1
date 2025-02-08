@@ -1,1 +1,4 @@
-# Data-Trio---Project-1
+# The Snake Game
+
+**Team Members:** 
+Mrunali Parmar-202401122
