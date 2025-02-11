@@ -41,6 +41,7 @@ class Snake{
     char direction;
 public:
     Point body[MAX_LENGTH];
+
     Snake(int x, int y)
     {
        length = 1;
@@ -73,12 +74,12 @@ public:
 
 
     bool move(Point food){
-
+        //Move the snake's body
         for(int i= length-1;i>0;i--)  // lenght = 4
         {
             body[i] = body[i-1];
         }
-
+        //Move the head
         switch(direction)
         {
             int val;
@@ -109,7 +110,11 @@ public:
                 return false;
             }
         }
-
+        //Check for collision with boundaries
+        if(body[0].xCoord < 0 || body[0].xCoord >= consoleWidth || body[0].yCoord < 0 || body[0].yCoord >= consoleHeight){
+            return false; //Game over
+        }
+        
         //snake eats food
         if(food.xCoord == body[0].xCoord && food.yCoord == body[0].yCoord)
         {
@@ -118,7 +123,6 @@ public:
         }
 
         return true;
-
     }
 };
 
@@ -165,14 +169,23 @@ public:
 
     void draw(){
         system("cls");
-        for(int i=0;i<snake->getLength();i++)
-        {
-            gotoxy(snake->body[i].xCoord, snake->body[i].yCoord);
-            cout<<SNAKE_BODY;
+        //Draw boundaries
+        for(int i=0; i<consoleWidth; i++) {
+            gotoxy(i, 1); cout<< "#"; //Top boundary
+            gotoxy(i, consoleHeight - 1); cout<< "#"; //Bottom boundary
         }
-
-        gotoxy(food.xCoord, food.yCoord);
-        cout<<FOOD;
+        for (int i=1; i<consoleHeight; i++) {
+            gotoxy(0, i); cout<<"#"; //Left boundary
+            gotoxy(consoleWidth - 1, i); cout<<"#"; //Right boundary
+        }
+        //Draw the snake
+        for (int i=0; i<snake->getLength(); i++){
+            gotoxy(snake->body[i].xCoord, snake->body[i].yCoord);
+            cout<< SNAKE_BODY;
+        }
+        //Draw the food
+        gotoxy(food.xCoord, foor.yCoord);
+        cout<< FOOD;
 
         displayCurrentScore();
     }
@@ -227,8 +240,9 @@ int main(){
         board->draw();
         Sleep(100);
     }
-
-    cout<<"Game over"<<endl;
-    cout<<"Final score is :"<<board->getScore();
+    system("cls");
+    cout<<"******** GAME OVER ********"<<endl;
+    cout<<"Final score is :"<<board->getScore()<<endl;
+    delete board;
     return 0;
 }
