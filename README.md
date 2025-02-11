@@ -1,7 +1,7 @@
-# Team Members
-# Mrunali Parmar - 202401122
-# Manya Rana - 202401115
-# Maharshi Soni - 202401108
+Team Members:
+Mrunali Parmar - 202401122
+Manya Rana - 202401115
+Maharshi Soni - 202401108
 
 # **Snake Game (C++ Console Application) 🐍**
 
@@ -60,7 +60,8 @@ Current Score: 5
 ## **🛠️ Future Improvements**
 🔹 Add **pause and resume** functionality.  
 🔹 Add **difficulty levels** (speed increase over time).  
-🔹 Support for **Linux & macOS** (replace `windows.h` with cross-platform alternatives). 
+🔹 Support for **Linux & macOS** (replace `windows.h` with cross-platform alternatives).
+
 🔹 Implement a **high score system** to track and display the best score across multiple game sessions.  
 🔹 **Enhance graphics** by using a more advanced rendering method for a smoother and visually appealing experience.  
 ---
