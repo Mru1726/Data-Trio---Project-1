@@ -58,12 +58,12 @@ Current Score: 5
 ```
 
 ## **🛠️ Future Improvements**
-🔹 Add **pause and resume** functionality.  
-🔹 Add **difficulty levels** (speed increase over time).  
-🔹 Support for **Linux & macOS** (replace `windows.h` with cross-platform alternatives).
+Add **pause and resume** functionality.  
+Add **difficulty levels** (speed increase over time).  
+Support for **Linux & macOS** (replace `windows.h` with cross-platform alternatives).
 
-🔹 Implement a **high score system** to track and display the best score across multiple game sessions.  
-🔹 **Enhance graphics** by using a more advanced rendering method for a smoother and visually appealing experience.  
+Implement a **high score system** to track and display the best score across multiple game sessions.
+
 ---
 
 ### **Enjoy the game!**
