@@ -13,6 +13,7 @@ A classic **Snake Game** built in **C++** using the **Windows Console API**. The
   - `A` → Move **Left**  
   - `S` → Move **Down**  
   - `D` → Move **Right**  
+- `x` -> Ends the game
 - Eat the food (`o`) to grow the snake.  
 - Avoid **hitting the walls** or **your own body**—otherwise, it's **Game Over**!  
 
