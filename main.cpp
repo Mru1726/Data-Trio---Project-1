@@ -47,7 +47,7 @@ void SpawnObstacle(){
         obstacleY = (rand() % (HEIGHT - 2)) + 1;
 
         if (obstacleX == x && obstacleY == y) valid = false;
-        if (obstacleX == foodx && obstacleY == foodY) valid = false;
+        if (obstacleX == foodX && obstacleY == foodY) valid = false;
         for (int i=0; i<nTail; i++){
             if (obstacleX == tailX[i] && obstacleY == tailY[i]){
                 valid = false;
