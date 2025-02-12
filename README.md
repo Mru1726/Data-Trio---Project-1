@@ -47,16 +47,16 @@ A classic **Snake Game** built in **C++** using the **Windows Console API**. The
 ## **📸 Screenshot**
 (You can add an image here by uploading it to your repository and linking it)
 
-```
-####################
-#                  #
-#        O         #
-#       O O        #
-#     o            #
-#                  #
-####################
-Current Score: 5
-```
+##################################################
+#                                                #
+#        Ooooo                                   #
+#               F                                #
+#                                                #
+#                                                #
+##################################################
+
+Score: 20
+
 
 ## **🛠️ Future Improvements**
 Add **pause and resume** functionality.  
