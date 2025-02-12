@@ -136,7 +136,7 @@ int main() {
         Draw();
         Input();
         Logic();
-        // No delay, runs at maximum speed
+        Sleep(100);
     }
 
     cout << "\nGame Over! Final Score: " << score << endl;
