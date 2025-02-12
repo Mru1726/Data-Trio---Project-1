@@ -1,6 +1,8 @@
 #include <iostream>
-#include <conio.h>  // For _kbhit() and _getch()
-#include <cstdlib>  // For rand()
+#include <conio.h> // For _kbhit() and _getch()
+#include <cstdlib> // For rand()
+#include <ctime>   // For time()
+#include <windows.h> //For Sleep()
 
 #define WIDTH 50  // Columns
 #define HEIGHT 25 // Rows
@@ -26,7 +28,6 @@ void SpawnFood() {
         foodX = (rand() % (WIDTH - 2)) + 1;
         foodY = (rand() % (HEIGHT - 2)) + 1;
 
-        // Make sure food doesn't spawn on the snake's body
         if (foodX == x && foodY == y) valid = false;
         for (int i = 0; i < nTail; i++) {
             if (foodX == tailX[i] && foodY == tailY[i]) {
@@ -39,43 +40,48 @@ void SpawnFood() {
 
 void Setup() {
     gameOver = false;
-    direction = RIGHT;  // Start moving to the right
+    direction = RIGHT;
     x = WIDTH / 2;
     y = HEIGHT / 2;
 
-    // Spawn food at a random location
+    srand(time(0));
     SpawnFood();
 
     score = 0;
-    nTail = 0; // Reset tail length
+    nTail = 2;
 }
 
 void Draw() {
-    system("cls"); // Clear screen
+    system("cls");
 
-    for (int i = 0; i < WIDTH; i++) cout << "#"; // Top border
+    for (int i = 0; i < WIDTH; i++) cout << "#";
     cout << "\n";
 
-    for (int i = 0; i < HEIGHT - 2; i++) {
+    for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
-            if (j == 0 || j == WIDTH - 1) cout << "#"; // Side walls
-            else if (i == y && j == x) cout << "O"; // Snake head
-            else if (i == foodY && j == foodX) cout << "F"; // Food
+            if (j == 0 || j == WIDTH - 1)
+                cout << "#";
+            else if (i == y && j == x)
+                cout << "O";
+            else if (i == foodY && j == foodX)
+                cout << "F";
             else {
                 bool print = false;
                 for (int k = 0; k < nTail; k++) {
                     if (tailX[k] == j && tailY[k] == i) {
-                        cout << "o"; // Snake tail
+                        cout << "o";
                         print = true;
+                        break;
                     }
                 }
-                if (!print) cout << " ";
+                if (!print)
+                    cout << " ";
             }
         }
         cout << "\n";
     }
 
-    for (int i = 0; i < WIDTH; i++) cout << "#"; // Bottom border
+    for (int i = 0; i < WIDTH; i++) cout << "#";
     cout << "\n";
 
     cout << "Score: " << score << "\n";
@@ -94,12 +100,10 @@ void Input() {
 }
 
 void Logic() {
-    int prevX = tailX[0], prevY = tailY[0];
+    int prevX = x, prevY = y;
     int prev2X, prev2Y;
-    tailX[0] = x;
-    tailY[0] = y;
 
-    for (int i = 1; i < nTail; i++) {
+    for (int i = 0; i < nTail; i++) {
         prev2X = tailX[i];
         prev2Y = tailY[i];
         tailX[i] = prevX;
@@ -113,30 +117,35 @@ void Logic() {
         case RIGHT: x++; break;
         case UP: y--; break;
         case DOWN: y++; break;
-        default: break;
     }
 
-    if (x <= 0 || x >= WIDTH - 1 || y < 0 || y >= HEIGHT - 2) gameOver = true; // Collision with wall
+    // Wall collision fix
+    if (x <= 0 || x >= WIDTH - 1 || y < 0 || y >= HEIGHT)
+        gameOver = true;
 
-    for (int i = 0; i < nTail; i++) // Collision with itself
-        if (tailX[i] == x && tailY[i] == y) gameOver = true;
+    // Self-collision
+    for (int i = 0; i < nTail; i++)
+        if (tailX[i] == x && tailY[i] == y)
+            gameOver = true;
 
+    // Eating food
     if (x == foodX && y == foodY) {
         score += 10;
         nTail++;
-        SpawnFood(); // Spawn food after eating
+        SpawnFood();
     }
 }
 
 int main() {
     Setup();
-    
+
     while (!gameOver) {
         Draw();
         Input();
         Logic();
+        Sleep(100); // Adjusted speed for smoother gameplay
     }
 
-    cout << "\nGame Over! Final Score: " << score << endl;
+    cout << "\nGame Over! \nFinal Score: " << score << endl;
     return 0;
 }
