@@ -46,16 +46,9 @@ A classic **Snake Game** built in **C++** using the **Windows Console API**. The
 
 ## **📸 Screenshot**
 (You can add an image here by uploading it to your repository and linking it)
+# Snake Game in C++
+![Snake Game](snake_game.png)
 
-##################################################
-#                                                #
-#        Ooooo                                   #
-#               F                                #
-#                                                #
-#                                                #
-##################################################
-
-Score: 20
 
 
 ## **🛠️ Future Improvements**
