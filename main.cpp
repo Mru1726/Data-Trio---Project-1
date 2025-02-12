@@ -131,7 +131,7 @@ void Logic() {
     // Eating food
     if (x == foodX && y == foodY) {
         score += 10;
-        nTail++;
+        nTail+=2;
         SpawnFood();
     }
 }
