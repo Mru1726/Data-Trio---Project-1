@@ -1,7 +1,6 @@
 #include <iostream>
 #include <conio.h>  // For _kbhit() and _getch()
 #include <cstdlib>  // For rand()
-#include <windows.h>
 
 #define WIDTH 50  // Columns
 #define HEIGHT 25 // Rows
@@ -136,7 +135,6 @@ int main() {
         Draw();
         Input();
         Logic();
-        Sleep(100);
     }
 
     cout << "\nGame Over! Final Score: " << score << endl;
